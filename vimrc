@@ -19,6 +19,8 @@ set gcr=a:blinkon0              "Disable cursor blink
 set visualbell                  "No sounds
 set autoread                    "Reload files changed outside vim
 set laststatus=2                "Always show status line
+colorscheme grb256
+set t_Co=256
 
 " This makes vim act like all other editors, buffers can
 " exist in the background without being in a window.
@@ -28,6 +30,22 @@ set hidden
 "turn on syntax highlighting
 syntax on
 
+" ============== Plugin Ins ======================
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+"required
+Plugin 'gmarik/Vundle.vim'
+" airline
+Plugin 'bling/vim-airline'
+" nerdtree
+Plugin 'scrooloose/nerdtree'
+" syntastic
+Plugin 'scrooloose/syntastic'
+" vim go
+Plugin 'fatih/vim-go'
+
+call vundle#end()
+filetype plugin indent on   "required
 
 " ============== Key Bindings ====================
 let mapleader=","
@@ -40,7 +58,7 @@ nmap <leader>q :q<cr>
 " This loads all the plugins specified in ~/.vim/vundles.vim
 " Use Vundle plugin to manage all other plugins
 if filereadable(expand("~/.vim/vundles.vim"))
-  source ~/.vim/vundles.vim
+  source ~/.vim/plugin.vim
 endif
 
 " ================ Turn Off Swap Files ==============
